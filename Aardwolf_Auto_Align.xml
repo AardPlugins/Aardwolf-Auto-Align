@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE muclient>
+<muclient>
+    <plugin
+        name="Aardwolf_Auto_Align"
+        author="deathr"
+        id="c3cca7564edaa3977c3f1d8c"
+        language="Lua"
+        purpose="Uses a clan skill to keep within a specified alignment"
+        date_written="2025-01-09 17:04:07"
+        save_state="y"
+        requires="5.07"
+        version="1.0">
+    </plugin>
+
+    <script>
+<![CDATA[
+dofile(GetPluginInfo(GetPluginID(), 20) .. "Aardwolf_Auto_Align.lua")
+]]>
+    </script>
+
+    <timers>
+        <timer
+            name="timer_init_plugin"
+            second="0.5"
+            active_closed="y"
+            script="init_plugin"
+            enabled="y"
+            send_to="12"></timer>
+    </timers>
+
+
+    <aliases>
+        <alias enabled="y"
+            regexp="y"
+            match="^autoalign options$"
+            script="alias_options"
+            sequence="100"
+            send_to="12"></alias>
+
+        <alias enabled="y"
+            regexp="y"
+            match="^autoalign help$"
+            script="alias_help"
+            sequence="100"
+            send_to="12"></alias>
+
+        <alias enabled="y"
+            regexp="y"
+            match="^autoalign set (?<align>.*)$"
+            script="alias_set_align"
+            sequence="100"
+            send_to="12"></alias>
+
+        <alias enabled="y"
+            regexp="y"
+            match="^rexit debug$"
+            script="alias_set_debug_mode"
+            sequence="100"
+            send_to="12"></alias>
+
+        <!-- Update Aliases -->
+        <alias enabled="y"
+            regexp="y"
+            match="^autoalign update$"
+            script="alias_update_plugin"
+            sequence="100"
+            send_to="12"></alias>
+
+        <alias enabled="y"
+            regexp="y"
+            match="^autoalign force update(?: (?<branch>\S+))?$"
+            script="alias_force_update_plugin"
+            sequence="100"
+            send_to="12"></alias>
+
+        <alias enabled="y"
+            regexp="y"
+            match="^autoalign reload$"
+            script="alias_reload_plugin"
+            sequence="100"
+            send_to="12"></alias>
+    </aliases>
+
+    <triggers>
+        <trigger
+            match="^A dragon appears and surrounds you with a shroud of darkness.$"
+            script="trigger_essence_evil"
+            ignore_case="n"
+            enabled="y"
+            regexp="y"
+            sequence="100"
+            keep_evaluating="y"
+            omit_from_output="n"></trigger>
+
+        <trigger
+            match="^A dragon appears and envelops you in brilliant white flames.$"
+            script="trigger_essence_good"
+            ignore_case="n"
+            enabled="y"
+            regexp="y"
+            sequence="100"
+            keep_evaluating="y"
+            omit_from_output="n"></trigger>
+
+        <trigger
+            match="^You failed to draw upon the essence of Athena.$"
+            script="trigger_essence_fail"
+            ignore_case="n"
+            enabled="y"
+            regexp="y"
+            sequence="100"
+            keep_evaluating="y"
+            omit_from_output="n"></trigger>
+
+    </triggers>
+
+</muclient>
