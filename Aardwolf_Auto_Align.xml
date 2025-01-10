@@ -113,6 +113,16 @@ dofile(GetPluginInfo(GetPluginID(), 20) .. "Aardwolf_Auto_Align.lua")
             keep_evaluating="y"
             omit_from_output="n"></trigger>
 
+        <trigger
+            match="^Not while you are fighting!$"
+            script="trigger_essence_fail"
+            ignore_case="n"
+            enabled="y"
+            regexp="y"
+            sequence="100"
+            keep_evaluating="y"
+            omit_from_output="n"></trigger>
+
     </triggers>
 
 </muclient>
